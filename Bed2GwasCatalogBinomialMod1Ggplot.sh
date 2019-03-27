@@ -19,9 +19,9 @@ echo Done: \$var
 done
 
 #print stats
-echo "Gwas Catalog number of SNP-phenotype associations:"
+echo \"Gwas Catalog number of SNP-phenotype associations:\"
 wc -l GwasCatalog.bed
-echo "Gwas Catalog number of SNP-phenotype associations per category:"
+echo \"Gwas Catalog number of SNP-phenotype associations per category:\"
 
 for var in \"\${@:1:\$#-1}\"
 do
@@ -40,7 +40,7 @@ rm \"\$var\".gwascatalog.bed.cut.sort
 done
 
 #new stats
-echo "Gwas Catalog number of SNP-phenotype associations per category AFTER REMOVING DUPLICATES:"
+echo \"Gwas Catalog number of SNP-phenotype associations per category AFTER REMOVING DUPLICATES:\"
 
 for var in \"\${@:1:\$#-1}\"
 do
