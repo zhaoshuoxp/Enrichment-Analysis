@@ -1,4 +1,4 @@
-﻿# Enrichment Analysis Scripts
+# Enrichment Analysis Scripts
 -----
 This repository has the following combined shell/awk/R scripts which can be used for GWAS/peaks/genes enrichment analysis and *P* value calculation.
 
@@ -9,7 +9,6 @@ This repository has the following combined shell/awk/R scripts which can be used
 
 > Requirements:
 awk, bedtools, R, R packages: ggplot2,wesanderson,directlabels
-
 
 -----
 ## Bed2GwasCatalogBinomialMod1Ggplot.sh &  runcategories.sh
@@ -38,7 +37,7 @@ GWAS genes will be used as background.
 *P* value will be printed.
 
 ------
-## Peaks_overlap_Fisher.sh 
+## Peaks_overlap_Fisher.sh
 
 #### Usage
 
