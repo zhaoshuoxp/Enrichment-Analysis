@@ -17,7 +17,7 @@ awk, bedtools, R, R packages: ggplot2,wesanderson,directlabels
 
 ## Bed2GwasCatalogBinomialMod1Ggplot.sh &  runcategories.sh
 
-This script was modified from [Milos' gwasanalytics](https://github.com/milospjanic/gwasanalytics/tree/master/bed2GwasCatalogBinomialMod1Ggplot). It interescts the genomic regions with GWAS lead SNPs and plots fold enrichment and *binomial P* values.
+This script was modified from [Milos' gwasanalytics](https://github.com/milospjanic/gwasanalytics/tree/master/bed2GwasCatalogBinomialMod1Ggplot). It intersects the genomic regions with GWAS lead SNPs and plots fold enrichment and *binomial P* values.
 
 #### Usage
 Put Bed2GwasCatalogBinomialMod1Ggplot.sh under your $PATH or edit its PATH in runcategories.sh. The GWAS catalogs can also be added/removed in runcategories.sh
