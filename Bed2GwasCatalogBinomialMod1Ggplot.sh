@@ -2,7 +2,8 @@
 
 #get gwas plus CARDIoGRAMplusC4D SNPs in BED format
 #wget http://www.genome.gov/admin/gwascatalog.txt
-awk -v OFS="\t" -F"\t" '{print $12,$13,$13+1,$22,$8}' /home/quanyi/SNP_dataset/gwascatalog.txt | awk -F"\t" '{if ($3!=1){print $0}}' > GwasCatalog.bed
+#awk -v OFS="\t" -F"\t" '{print $12,$13,$13+1,$22,$8}' /home/quanyi/SNP_dataset/gwascatalog.txt | awk -F"\t" '{if ($3!=1){print $0}}' > GwasCatalog.bed
+cp /home/quanyi/SNP_dataset/full.mod.crossmap GwasCatalog.bed
 awk -v OFS="\t" '{print $1,$2,$3,$4,"CardiogramPlusC4D"}' /home/quanyi/SNP_dataset/CARDIoGRAMplusC4D/CARDIOGRAMplusC4DleadSNPs.bed > CARDIOGRAMC4Dplusnovel.tmp
 sed -i 's/^chr//g' CARDIOGRAMC4Dplusnovel.tmp
 cat CARDIOGRAMC4Dplusnovel.tmp >> GwasCatalog.bed
@@ -117,12 +118,12 @@ cut -f4-6 "$var".gwascatalog.bed.cut.sort.uniq.overlap.input.int > "$var".gwasca
 done
 
 # prepare for fold change cal 
-selected=$(wc -l *uniq*cut|tail -n 1|cut -f 3 -d ' ')
-selected_total=$(wc -l *uniq*chrXY|tail -n 1|cut -f 3 -d ' ')
+selected=$(wc -l *uniq*cut|tail -n 1|awk '{print $1}')
+selected_total=$(wc -l *uniq*chrXY|tail -n 1|awk '{print $1}')
 sed -i 1d GwasCatalog.bed
 awk -v OFS="\t" '{print "chr"$1,$2,$3}' GwasCatalog.bed > GwasCatalog.bed1
-all=$(wc -l GwasCatalog.bed1|cut -f 1 -d" ")
-sub_total=$(intersectBed -a GwasCatalog.bed1 -b "$last" |wc -l|cut -d" " -f1)
+all=$(wc -l GwasCatalog.bed1|awk '{print $1}')
+sub_total=$(intersectBed -a GwasCatalog.bed1 -b "$last" |wc -l|awk '{print $1}')
 
 #create  R script
 touch script.R
@@ -145,12 +146,12 @@ fra=$(cat "$var".gwascatalog.bed.cut.sort.uniq.overlap.input.int.cut | awk '{ su
 echo Fraction of hg19 $fra
 
 echo "print(\"$var\")" >> script.R
-echo  "dbinom ($(wc -l "$var".gwascatalog.bed.cut.sort.uniq.overlap | cut -f1 -d ' '), $(wc -l "$var".gwascatalog.bed | cut -f1 -d ' '), "$fra")" >> script.R
+echo  "dbinom ($(wc -l "$var".gwascatalog.bed.cut.sort.uniq.overlap | awk '{print $1}'), $(wc -l "$var".gwascatalog.bed | awk '{print $1}'), "$fra")" >> script.R
 #calculating fold change
 
 echo Fold change: $var2
-overlap="$(wc -l "$var".gwascatalog.bed.cut.sort.uniq.overlap | cut -f1 -d ' ')"
-total="$(wc -l "$var".gwascatalog.bed | cut -f1 -d ' ')"
+overlap="$(wc -l "$var".gwascatalog.bed.cut.sort.uniq.overlap | awk '{print $1}')"
+total="$(wc -l "$var".gwascatalog.bed | awk '{print $1}')"
 echo overlap: $overlap
 echo total: $total
 echo fold:
@@ -160,10 +161,10 @@ fold="$(awk 'BEGIN {print (("'"$overlap"'"/"'"$sub_total"'")/("'"$total"'"/"'"$a
 #fold="$(awk 'BEGIN {print (("'"$overlap"'"/"'"$selected"'")/("'"$total"'"/"'"$selected_total"'"))}')"
 echo $fold
 
-echo  "x<-dbinom ($(wc -l "$var".gwascatalog.bed.cut.sort.uniq.overlap | cut -f1 -d ' '), $(wc -l "$var".gwascatalog.bed | cut -f1 -d ' '), "$fra")
+echo  "x<-dbinom ($(wc -l "$var".gwascatalog.bed.cut.sort.uniq.overlap | awk '{print $1}'), $(wc -l "$var".gwascatalog.bed | awk '{print $1}'), "$fra")
 y<-"$fold"
 name<-\""$var2"\"
-s<-$(wc -l "$var".gwascatalog.bed | cut -f1 -d ' ')
+s<-$(wc -l "$var".gwascatalog.bed | awk '{print $1}')
 z<-c(name,x,y,s)
 existingDF <- rbind(existingDF,z)
 existingDF">>script.R
