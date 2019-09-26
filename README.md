@@ -3,13 +3,14 @@
 -----
 This repository has the following combined shell/awk/R scripts which can be used for GWAS/peaks/genes enrichment analysis and *P* value calculation.
 
- * [Bed2GwasCatalogBinomialMod1Ggplot.sh](https://github.com/zhaoshuoxp/Enrichment-Analysis#bed2gwascatalogbinomialmod1ggplotsh---runcategoriessh): Analyze GWAS lead SNPs enrichment in given catalogs of the genomic regions.
- * [runcategories.sh](https://github.com/zhaoshuoxp/Enrichment-Analysis#bed2gwascatalogbinomialmod1ggplotsh---runcategoriessh): wrappers of running Bed2GwasCatalogBinomialMod1Ggplot.sh with 43 GWAS catalogs.
+ * [Bed2GwasCatalogBinomialMod1Ggplot.sh](https://github.com/zhaoshuoxp/Enrichment-Analysis#bed2gwascatalogbinomialmod1ggplotsh---runcategoriessh): Analyze GWAS lead SNPs enrichment in given genomic regions.
+ * [gwasLD.sh](https://github.com/zhaoshuoxp/Enrichment-Analysis#gwasLD.sh): Analyze GWAS lead SNPs High LD enrichment with given SNPs list .
+ * [runcategories.sh](https://github.com/zhaoshuoxp/Enrichment-Analysis#bed2gwascatalogbinomialmod1ggplotsh---runcategoriessh): Wrapper of running Bed2GwasCatalogBinomialMod1Ggplot.sh with 43 GWAS catalogs.
  * [Genes_overlap_Fisher.sh](https://github.com/zhaoshuoxp/Enrichment-Analysis#genes_overlap_fishersh): *Fisher* test for two groups of genes overlapping.
  * [Peaks_overlap_Fisher.sh](https://github.com/zhaoshuoxp/Enrichment-Analysis#peaks_overlap_fishersh): *Fisher* test for two groups of peaks overlapping.
 
 > Requirements:
-awk, bedtools, R, R packages: ggplot2,wesanderson,directlabels
+awk, bedtools, plink, Python3, Python packages: LDDirection, dbSNP, plink, Cython, R, R packages: ggplot2,wesanderson,directlabels
 
 [![996.icu](https://img.shields.io/badge/link-996.icu-red.svg)](https://996.icu) [![LICENSE](https://img.shields.io/badge/license-Anti%20996-blue.svg)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
 
@@ -30,6 +31,30 @@ Put Bed2GwasCatalogBinomialMod1Ggplot.sh under your $PATH or edit its PATH in ru
 * output.pdf
 
 [More informations](https://github.com/milospjanic/gwasanalytics)
+
+
+
+----
+
+##gwasLD.sh
+
+This script requires [LDDirection](https://github.com/MikeDacre/LDDirection) for LD calculation. 
+
+#### Input
+
+SNPs, a rsID per line.
+
+#### Usage
+
+Modify line4 for the GWAS catalog with rsID file. Line5 for population, line6 for maximum distance of the two SNP pair, and line 7 for R-square cutoff (0.2 minimal).
+
+```
+./gwasLD.sh SNP.txt
+```
+
+#### Output
+
+- SNP_bar.png
 
 
 
