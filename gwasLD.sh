@@ -75,7 +75,7 @@ dev.off()
 EOF
 
 chmod 755 plot.R
-plot.R ${input}.ld.8.ratio #${input}.ld
+./plot.R ${input}.ld.8.ratio #${input}.ld
 
 mv plot.R gwas_raw_ld
 mv ${input}.ldr.8 gwas_raw_ld
