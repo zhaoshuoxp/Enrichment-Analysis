@@ -36,7 +36,7 @@ Put Bed2GwasCatalogBinomialMod1Ggplot.sh under your $PATH or edit its PATH in ru
 
 ----
 
-##gwasLD.sh
+## gwasLD.sh
 
 This script requires [LDDirection](https://github.com/MikeDacre/LDDirection) for LD calculation. 
 
