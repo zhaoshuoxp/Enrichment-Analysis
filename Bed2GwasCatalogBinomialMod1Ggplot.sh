@@ -94,7 +94,7 @@ do
 wc -l "$var".gwascatalog.bed.cut.sort.uniq.overlap | cut -f1 -d ' '
 done
 #get the size of hg19
-hg19=$(cat $len_hg19 | awk '{ sum+=($2)} END {print sum}')
+hg19=$(cat /home/quanyi/genome/hg19/chromsize | awk '{ sum+=($2)} END {print sum}')
 echo Human Genome size version hg19: $hg19
 
 #bedtools merge on input bed
