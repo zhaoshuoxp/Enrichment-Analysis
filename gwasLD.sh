@@ -16,11 +16,12 @@ touch ${input}.ldr.8
 mkdir gwas_raw_ld
 
 for i in ${gwas[@]};do
-    grep -i $i $gwas_catalog > ${i}.txt
+    grep -i $i $gwas_catalog_snp > ${i}.txt
     cut -f1 ${i}.txt|cut -f1 -d';' |grep -v chr|grep -v _ > ${i}.txt1
     ldlists preprocess ${i}.txt1 ${i}.lookup
     ldlists analyze --r2 $r2 --distance $distance --populations $populations ${input}.lookup ${i}.lookup ${i}.ld
-    awk '$11>0.8' ${i}.ld > ${i}.ldr.8
+    awk '$11>0.8' ${i}.ld > ${i}.ldr.pre.8
+    awk 'NR==FNR{a[$1]}NR>FNR{if ($2 in a ||$5 in a){print $0}}' {i}.lookup ${i}.ldr.pre.8 ${i}.ldr.8
     #awk -v OFS="\t" '{print $11,"'"$i"'""}' ${i}.ld |sed '1d' >>${input}.ld
     num_r8=$(cut -f5 ${i}.ldr.8|sort -u| wc -l|awk '{print $1}')
     total=$(wc -l ${i}.lookup|awk '{print $1}')
