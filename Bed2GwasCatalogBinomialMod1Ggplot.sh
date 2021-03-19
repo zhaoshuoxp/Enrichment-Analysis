@@ -3,8 +3,9 @@
 #get gwas plus CARDIoGRAMplusC4D SNPs in BED format
 #wget http://www.genome.gov/admin/gwascatalog.txt
 #awk -v OFS="\t" -F"\t" '{print $12,$13,$13+1,$22,$8}' /home/quanyi/SNP_dataset/gwascatalog.txt | awk -F"\t" '{if ($3!=1){print $0}}' > GwasCatalog.bed
-cp /home/quanyi/SNP_dataset/full.mod.crossmap GwasCatalog.bed
-awk -v OFS="\t" '{print $1,$2,$3,$4,"CardiogramPlusC4D"}' /home/quanyi/SNP_dataset/CARDIoGRAMplusC4D/CARDIOGRAMplusC4DleadSNPs.bed > CARDIOGRAMC4Dplusnovel.tmp
+SHELL_FOLDER=$(dirname "$0")
+cp ${SHELL_FOLDER}/full.mod.crossmap GwasCatalog.bed
+awk -v OFS="\t" '{print $1,$2,$3,$4,"CardiogramPlusC4D"}' ${SHELL_FOLDER}/CARDIOGRAMplusC4DleadSNPs.bed > CARDIOGRAMC4Dplusnovel.tmp
 sed -i 's/^chr//g' CARDIOGRAMC4Dplusnovel.tmp
 cat CARDIOGRAMC4Dplusnovel.tmp >> GwasCatalog.bed
 rm CARDIOGRAMC4Dplusnovel.tmp
