@@ -4,7 +4,7 @@
 This repository has the following combined shell/awk/R scripts which can be used for GWAS/peaks/genes enrichment analysis and *P* value calculation.
 
  * [Bed2GwasCatalogBinomialMod1Ggplot.sh](https://github.com/zhaoshuoxp/Enrichment-Analysis#bed2gwascatalogbinomialmod1ggplotsh---runcategoriessh): Analyze GWAS lead SNPs enrichment in given genomic regions.
- * [gwasLD.sh](https://github.com/zhaoshuoxp/Enrichment-Analysis#gwasLD.sh): Analyze GWAS lead SNPs High LD enrichment with given SNPs list .
+ * [gwasLD.sh](https://github.com/zhaoshuoxp/Enrichment-Analysis#gwasLD): Analyze GWAS lead SNPs High LD enrichment with given SNPs list .
  * [runcategories.sh](https://github.com/zhaoshuoxp/Enrichment-Analysis#bed2gwascatalogbinomialmod1ggplotsh---runcategoriessh): Wrapper of running Bed2GwasCatalogBinomialMod1Ggplot.sh with 43 GWAS catalogs.
  * [Genes_overlap_Fisher.sh](https://github.com/zhaoshuoxp/Enrichment-Analysis#genes_overlap_fishersh): *Fisher* test for two groups of genes overlapping.
  * [Peaks_overlap_Fisher.sh](https://github.com/zhaoshuoxp/Enrichment-Analysis#peaks_overlap_fishersh): *Fisher* test for two groups of peaks overlapping.
