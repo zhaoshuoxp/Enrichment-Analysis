@@ -3,9 +3,7 @@
 -----
 This repository has the following combined shell/awk/R scripts which can be used for GWAS/peaks/genes enrichment analysis and *P* value calculation.
 
- * [Bed2GwasCatalogBinomialMod1Ggplot.sh](https://github.com/zhaoshuoxp/Enrichment-Analysis#bed2gwascatalogbinomialmod1ggplotsh---runcategoriessh): Analyze GWAS lead SNPs enrichment in given genomic regions.
  * [gwasLD.sh](https://github.com/zhaoshuoxp/Enrichment-Analysis#gwasLDsh): Analyze GWAS lead SNPs High LD enrichment with given SNPs list .
- * [runcategories.sh](https://github.com/zhaoshuoxp/Enrichment-Analysis#bed2gwascatalogbinomialmod1ggplotsh---runcategoriessh): Wrapper of running Bed2GwasCatalogBinomialMod1Ggplot.sh with 43 GWAS catalogs.
  * [Genes_overlap_Fisher.sh](https://github.com/zhaoshuoxp/Enrichment-Analysis#genes_overlap_fishersh): *Fisher* test for two groups of genes overlapping.
  * [Peaks_overlap_Fisher.sh](https://github.com/zhaoshuoxp/Enrichment-Analysis#peaks_overlap_fishersh): *Fisher* test for two groups of peaks overlapping.
 
@@ -13,26 +11,6 @@ This repository has the following combined shell/awk/R scripts which can be used
 awk, bedtools, plink, Python3, Python packages: LDDirection, dbSNP, plink, Cython, R, R packages: ggplot2,wesanderson,directlabels
 
 [![996.icu](https://img.shields.io/badge/link-996.icu-red.svg)](https://996.icu) [![LICENSE](https://img.shields.io/badge/license-Anti%20996-blue.svg)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
-
-----
-
-## Bed2GwasCatalogBinomialMod1Ggplot.sh &  runcategories.sh
-
-This script was modified from [Milos' gwasanalytics](https://github.com/milospjanic/gwasanalytics/tree/master/bed2GwasCatalogBinomialMod1Ggplot). It intersects the genomic regions with GWAS lead SNPs and plots fold enrichment and *binomial P* values.
-
-#### Usage
-
-Put Bed2GwasCatalogBinomialMod1Ggplot.sh under your $PATH or edit its PATH in runcategories.sh. The GWAS catalogs can also be added/removed in runcategories.sh
-
-    ./runcategories.sh regions.bed
-
-#### Output
-
-* output.pdf
-
-[More informations](https://github.com/milospjanic/gwasanalytics)
-
-
 
 ----
 
