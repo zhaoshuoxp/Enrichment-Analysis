@@ -6,9 +6,10 @@ This repository has the following combined shell/awk/R scripts which can be used
  * [gwasLD.sh](https://github.com/zhaoshuoxp/Enrichment-Analysis#gwasLDsh): Analyze GWAS lead SNPs High LD enrichment with given SNPs list .
  * [Genes_overlap_Fisher.sh](https://github.com/zhaoshuoxp/Enrichment-Analysis#genes_overlap_fishersh): *Fisher* test for two groups of genes overlapping.
  * [Peaks_overlap_Fisher.sh](https://github.com/zhaoshuoxp/Enrichment-Analysis#peaks_overlap_fishersh): *Fisher* test for two groups of peaks overlapping.
+ * [split_bw_by_strand.sh](https://github.com/zhaoshuoxp/Enrichment-Analysis#split_bw_by_strandsh): Generate strand-specific BigWig from a BAM file.
 
 > Requirements:
-awk, bedtools, plink, Python3, Python packages: LDDirection, dbSNP, plink, Cython, R, R packages: ggplot2,wesanderson,directlabels
+awk, bedtools, bedGraphToBigWig, plink, Python3, Python packages: LDDirection, dbSNP, plink, Cython, R, R packages: ggplot2,wesanderson,directlabels
 
 [![996.icu](https://img.shields.io/badge/link-996.icu-red.svg)](https://996.icu) [![LICENSE](https://img.shields.io/badge/license-Anti%20996-blue.svg)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
 
@@ -63,6 +64,14 @@ GWAS genes will be used as background.
 *P* value will be printed.
 
 
+
+------
+
+ ## split_bw_by_strand.sh
+
+#### Usage
+
+    split_bw_by_strand.sh -g hg38 -o test test.bam
 
 ------
 
