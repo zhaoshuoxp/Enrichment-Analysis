@@ -67,14 +67,6 @@ GWAS genes will be used as background.
 
 ------
 
- ## split_bw_by_strand.sh
-
-#### Usage
-
-    split_bw_by_strand.sh -g hg38 -o test test.bam
-
-------
-
 Author [@zhaoshuoxp](https://github.com/zhaoshuoxp)  
 Mar 27 2019  
 
